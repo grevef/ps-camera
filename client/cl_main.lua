@@ -215,7 +215,7 @@ function CameraLoop()
                 PlaySoundFrontend(-1, "Camera_Shoot", "Phone_Soundset_Franklin", false)
 
                 if Config.UseFivemanage == false then
-                    exports['screenshot-basic']:requestScreenshotUpload(tostring(uploadHookOrSecret), "files[]", function(data)
+                    exports['screencapture']:requestScreenshotUpload(tostring(uploadHookOrSecret), "files[]", function(data)
                         local image = json.decode(data)
                         camera = false
                         if cameraprop then DeleteEntity(cameraprop) end
@@ -225,7 +225,7 @@ function CameraLoop()
                         SendNUIMessage({action = "hideOverlay"})
                     end)
                 else
-                    exports['screenshot-basic']:requestScreenshotUpload("https://api.fivemanage.com/api/v3/file", "file", {
+                    exports['screencapture']:requestScreenshotUpload("https://api.fivemanage.com/api/v3/file", "file", {
                         headers = {
                             Authorization = tostring(uploadHookOrSecret)
                         },
