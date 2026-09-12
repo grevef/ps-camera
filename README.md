@@ -3,13 +3,37 @@ The ps-camera script allows you to capture images throughout the city, serving a
 
 # Setup
 
+* Set `SvConfig.Inv` in `server/sv_main.lua` to `"qb"` or `"ox"` depending on your inventory system.
+
+### qb-inventory
 * Add items to qb-core > shared > items.lua
 ```
 	['camera'] 						 = {['name'] = 'camera', 			  	  		['label'] = 'Camera', 					['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'camera.png', 				['unique'] = true, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = 'Camera to take pretty pictures.'},
 	['photo'] 				 		 = {['name'] = 'photo', 			  	  		['label'] = 'Saved Pic', 				['weight'] = 500, 		['type'] = 'item', 		['image'] = 'photo.png', 				['unique'] = true, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = 'Brand new picture saved!'},
 ```
 * Add pictures for items to your-inventory > html > images
-* Add Discord webhook to ps-camera > server > [Line 4](https://github.com/Project-Sloth/ps-camera/blob/cc0c2c35ab15840abe7533521a3ed4aac729cc60/server/sv_main.lua#L4)
+
+### ox_inventory
+* Add items to ox_inventory > data > items.lua
+```
+	['camera'] = {
+		label = 'Camera',
+		weight = 1000,
+		stack = false,
+		close = true,
+		description = 'Camera to take pretty pictures.',
+	},
+	['photo'] = {
+		label = 'Saved Pic',
+		weight = 500,
+		stack = false,
+		close = true,
+		description = 'Brand new picture saved!',
+	},
+```
+* Add pictures for items to ox_inventory > web > images
+
+* Add Discord webhook to ps-camera > server > [Line 5](https://github.com/Project-Sloth/ps-camera/blob/cc0c2c35ab15840abe7533521a3ed4aac729cc60/server/sv_main.lua#L5)
 
 # Preview
 * Camera Overlay
