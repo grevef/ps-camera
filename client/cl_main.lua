@@ -215,7 +215,7 @@ function CameraLoop()
                 PlaySoundFrontend(-1, "Camera_Shoot", "Phone_Soundset_Franklin", false)
 
                 if Config.UseFivemanage == false then
-                    exports['screencapture']:requestScreenshotUpload(tostring(uploadHookOrSecret), "files[]", function(data)
+                    exports['screencapture']:requestScreenshotUpload(tostring(uploadHookOrSecret), "files[]", {}, function(data)
                         local image = json.decode(data)
                         camera = false
                         if cameraprop then DeleteEntity(cameraprop) end
