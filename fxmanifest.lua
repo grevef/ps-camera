@@ -11,7 +11,7 @@ version '1.1.0'
 lua54 'yes'
 
 shared_scripts {
-    'config.lua',
+    'shared/config.lua',
 }
 
 client_scripts {
@@ -20,7 +20,8 @@ client_scripts {
 }
 
 server_scripts {
-    'server/sv_*.lua',
+    'server/sv_config.lua',
+    'server/sv_main.lua',
 }
 
 ui_page "client/nui/index.html"

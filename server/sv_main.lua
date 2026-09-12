@@ -1,9 +1,5 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
-SvConfig = {
-    webhook = "", -- Add Discord webhook
-    FivemanageApiToken = '',
-}
 local function ConfigInvInvalid()
     print('^1[Error] Your Config.Inventory isnt set.. you probably had a typo\nYou have it set as= Config.Inventory = "'.. Config.Inventory .. '"')
 end

@@ -3,7 +3,7 @@ The ps-camera script allows you to capture images throughout the city, serving a
 
 # Setup
 
-* Set `Config.Inventory` in `config.lua` to `"qb"` or `"ox"` depending on your inventory system.
+* Set `Config.Inventory` in `shared/config.lua` to `"qb"` or `"ox"` depending on your inventory system.
 
 ### qb-inventory
 * Add items to qb-core > shared > items.lua
@@ -33,7 +33,7 @@ The ps-camera script allows you to capture images throughout the city, serving a
 ```
 * Add pictures for items to ox_inventory > web > images
 
-* Add Discord webhook to ps-camera > server > [Line 5](https://github.com/Project-Sloth/ps-camera/blob/cc0c2c35ab15840abe7533521a3ed4aac729cc60/server/sv_main.lua#L5)
+* Add Discord webhook to ps-camera > server > sv_config.lua
 
 # Preview
 * Camera Overlay
