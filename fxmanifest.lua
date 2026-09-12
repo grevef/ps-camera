@@ -33,3 +33,9 @@ files {
 }
 
 data_file 'DLC_ITYP_REQUEST' 'stream/ps_camera.ytyp'
+
+dependencies {
+    'qbx_core',
+    'ox_lib',
+    'ox_inventory',
+}

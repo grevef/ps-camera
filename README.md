@@ -3,7 +3,7 @@ The ps-camera script allows you to capture images throughout the city, serving a
 
 # Setup
 
-* Requires qb-core (framework) and ox_inventory (inventory system).
+* Requires qbx_core (framework), ox_lib (notifications) and ox_inventory (inventory system).
 
 * Add items to ox_inventory > data > items.lua
 ```

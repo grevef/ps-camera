@@ -1,5 +1,3 @@
-local QBCore = exports['qb-core']:GetCoreObject()
-
 RegisterNetEvent("ps-camera:cheatDetect", function()
     DropPlayer(source, "Cheater Detected")
 end)
@@ -32,7 +30,7 @@ end)
 
 RegisterNetEvent("ps-camera:CreatePhoto", function(url)
     local source = source
-    local player = QBCore.Functions.GetPlayer(source)
+    local player = exports.qbx_core:GetPlayer(source)
     if not player then return end
 
     local coords = GetEntityCoords(GetPlayerPed(source))
@@ -42,7 +40,7 @@ end)
 
 RegisterNetEvent("ps-camera:savePhoto", function(url, streetName)
     local source = source
-    local player = QBCore.Functions.GetPlayer(source)
+    local player = exports.qbx_core:GetPlayer(source)
     if not player then return end
 
     local location = streetName
@@ -55,14 +53,14 @@ RegisterNetEvent("ps-camera:savePhoto", function(url, streetName)
     local ox_inventory = exports.ox_inventory
 
     if not ox_inventory:CanCarryItem(source, 'photo', 1) then
-        return TriggerClientEvent('QBCore:Notify', source, "Can not carry photo!", "error")
+        return TriggerClientEvent('ox_lib:notify', source, { description = "Can not carry photo!", type = "error" })
     end
 
     ox_inventory:AddItem(source, "photo", 1, info)
 end)
 
 
-QBCore.Functions.CreateUseableItem("camera", function(source, item)
+exports.qbx_core:CreateUseableItem("camera", function(source, item)
     local source = source
 
     if Config.UseFivemanage == false then
@@ -82,7 +80,7 @@ QBCore.Functions.CreateUseableItem("camera", function(source, item)
     end
 end)
 
-QBCore.Functions.CreateUseableItem("photo", function(source, item)
+exports.qbx_core:CreateUseableItem("photo", function(source, item)
     local source = source
 
     local ox_inventory = exports.ox_inventory
@@ -103,7 +101,7 @@ function UseCam(source)
     if ox_inventory:GetItem(source, 'dslrcamera', nil, true) > 0 then
         TriggerClientEvent("ps-camera:useCamera", source)
     else
-        TriggerClientEvent('QBCore:Notify', source, "U don\'t have a camera", "error")
+        TriggerClientEvent('ox_lib:notify', source, { description = "U don\'t have a camera", type = "error" })
     end
 end
 

@@ -1,5 +1,3 @@
-local QBCore = exports['qb-core']:GetCoreObject()
-
 local camera = false
 local photo = false
 local fov_max = 80.0
