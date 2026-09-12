@@ -3,7 +3,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
 SvConfig = {
     Inv = "qb", -- qb(=lj) or ox [Inventory system]
     webhook = "", -- Add Discord webhook
-    FivemerrApiToken = '',
+    FivemanageApiToken = '',
 }
 local function ConfigInvInvalid()
     print('^1[Error] Your SvConfig.Inv isnt set.. you probably had a typo\nYou have it set as= SvConfig.Inv = "'.. SvConfig.Inv .. '"')
@@ -24,19 +24,19 @@ RegisterNetEvent("ps-camera:requestWebhook", function(Key)
     end
 end)
 
-RegisterNetEvent('ps-camera:requestFivemerrToken', function(Key)
+RegisterNetEvent('ps-camera:requestFivemanageToken', function(Key)
     local source = source
     local event = ("ps-camera:grabbed%s"):format(Key)
 
-    if Config.UseFivemerr == false then
-        return print("^1[Error] Requesting Fivemerr token but Config.UseFivemerr set to false.")
+    if Config.UseFivemanage == false then
+        return print("^1[Error] Requesting Fivemanage token but Config.UseFivemanage set to false.")
     end
 
-    if SvConfig.FivemerrApiToken == '' then
-        return print("^1[Error] Your Fivemerr API Token is missing in: Config.FivemerrApiToken")
+    if SvConfig.FivemanageApiToken == '' then
+        return print("^1[Error] Your Fivemanage API Token is missing in: Config.FivemanageApiToken")
     end
 
-    TriggerClientEvent(event, source, SvConfig.FivemerrApiToken)
+    TriggerClientEvent(event, source, SvConfig.FivemanageApiToken)
 end)
 
 RegisterNetEvent("ps-camera:CreatePhoto", function(url)
@@ -90,14 +90,14 @@ QBCore.Functions.CreateUseableItem("camera", function(source, item)
         return;
     end
 
-    if Config.UseFivemerr == false then
-        if not SvConfig.webhook or SvConfig.webhook == nil or SvConfig.webhook == "" then 
+    if Config.UseFivemanage == false then
+        if not SvConfig.webhook or SvConfig.webhook == nil or SvConfig.webhook == "" then
             print("^1[Error] A webhook is missing in: SvConfig.webhook")
             return;
         end
     else
-        if not SvConfig.FivemerrApiToken or SvConfig.FivemerrApiToken == '' then
-            return print("^1[Error] A webhook is missing in: SvConfig.FivemerrApiToken")
+        if not SvConfig.FivemanageApiToken or SvConfig.FivemanageApiToken == '' then
+            return print("^1[Error] A webhook is missing in: SvConfig.FivemanageApiToken")
         end
     end
 

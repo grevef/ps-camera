@@ -25,10 +25,10 @@ local function grabUploadDetails()
         p:resolve(hook)
     end)
     
-    if Config.UseFivemerr == false then
+    if Config.UseFivemanage == false then
         TriggerServerEvent("ps-camera:requestWebhook", Key)
     else
-        TriggerServerEvent("ps-camera:requestFivemerrToken", Key)
+        TriggerServerEvent("ps-camera:requestFivemanageToken", Key)
     end
     return Citizen.Await(p)
 end
@@ -214,7 +214,7 @@ function CameraLoop()
                 end
                 PlaySoundFrontend(-1, "Camera_Shoot", "Phone_Soundset_Franklin", false)
 
-                if Config.UseFivemerr == false then
+                if Config.UseFivemanage == false then
                     exports['screenshot-basic']:requestScreenshotUpload(tostring(uploadHookOrSecret), "files[]", function(data)
                         local image = json.decode(data)
                         camera = false
@@ -225,7 +225,7 @@ function CameraLoop()
                         SendNUIMessage({action = "hideOverlay"})
                     end)
                 else
-                    exports['screenshot-basic']:requestScreenshotUpload("https://api.fivemerr.com/v1/media/images", "file", {
+                    exports['screenshot-basic']:requestScreenshotUpload("https://api.fivemanage.com/api/v3/file", "file", {
                         headers = {
                             Authorization = tostring(uploadHookOrSecret)
                         },
@@ -235,7 +235,7 @@ function CameraLoop()
                         camera = false
                         if cameraprop then DeleteEntity(cameraprop) end
                         ClearPedTasks(lPed)
-                        local link = (image and image.url) or 'invalid_url'
+                        local link = (image and image.data and image.data.url) or 'invalid_url'
                         TriggerServerEvent("ps-camera:CreatePhoto", json.encode(link))
                         SendNUIMessage({action = "SavePic", pic = json.encode(link)})
                         SendNUIMessage({action = "hideOverlay"})

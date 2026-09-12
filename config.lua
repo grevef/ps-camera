@@ -1,3 +1,3 @@
 Config = Config or {}
 
-Config.UseFivemerr = true
+Config.UseFivemanage = true
