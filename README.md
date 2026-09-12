@@ -3,7 +3,7 @@ The ps-camera script allows you to capture images throughout the city, serving a
 
 # Setup
 
-* Set `SvConfig.Inv` in `server/sv_main.lua` to `"qb"` or `"ox"` depending on your inventory system.
+* Set `Config.Inventory` in `config.lua` to `"qb"` or `"ox"` depending on your inventory system.
 
 ### qb-inventory
 * Add items to qb-core > shared > items.lua
